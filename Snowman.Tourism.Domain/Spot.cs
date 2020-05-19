@@ -12,7 +12,7 @@ namespace Snowman.Tourism.Domain
         public string ImageURL { get; set; }
         public int UserId { get; set; }
         public int CategoryId { get; set; }
-        public Category Category { get; }
+        public Category Category { get; set; }
         public User User { get; set; }
         public List<Comment> Comments { get; set; }
         public List<Picture> Pictures { get; set; }

@@ -8,5 +8,7 @@ namespace Snowman.Tourism.WebApi.Dto
 
         [Required]
         public string ImageURL { get; set; }
+
+        public int UserId { get; set; }
     }
 }

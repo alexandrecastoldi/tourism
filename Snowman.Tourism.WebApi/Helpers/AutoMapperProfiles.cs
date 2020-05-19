@@ -13,6 +13,7 @@ namespace Snowman.Tourism.WebApi.Helpers
             CreateMap<Comment, CommentDto>().ReverseMap();
             CreateMap<Picture, PictureDto>().ReverseMap();
             CreateMap<Spot, SpotDto>().ReverseMap();
+            CreateMap<Spot, SpotDetailDto>().ReverseMap();
             CreateMap<User, UserDto>().ReverseMap();
             CreateMap<User, UserLoginDto>().ReverseMap();
         }

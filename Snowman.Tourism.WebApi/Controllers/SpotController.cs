@@ -32,12 +32,12 @@ namespace Snowman.Tourism.WebApi.Controllers
             try
             {
                 var spots = await _repo.GetAllSpotsAsync();
-                var results = _mapper.Map<IEnumerable<SpotDto>>(spots);
+                var results = _mapper.Map<IEnumerable<SpotDetailDto>>(spots);
 
                 return Ok(results);
 
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Internal error 500");
             }
@@ -49,12 +49,12 @@ namespace Snowman.Tourism.WebApi.Controllers
             try
             {
                 var spots = await _repo.GetSpotAsyncById(spotId, true);
-                var results = _mapper.Map<SpotDto>(spots);
+                var results = _mapper.Map<SpotDetailDto>(spots);
 
                 return Ok(results);
 
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Internal error 500");
             }
@@ -66,12 +66,12 @@ namespace Snowman.Tourism.WebApi.Controllers
             try
             {
                 var spots = await _repo.GetAllSpotsAsyncByName(name, false);
-                var results = _mapper.Map<IEnumerable<SpotDto>>(spots);
+                var results = _mapper.Map<IEnumerable<SpotDetailDto>>(spots);
 
                 return Ok(results);
 
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Internal error 500");
             }
@@ -83,12 +83,12 @@ namespace Snowman.Tourism.WebApi.Controllers
             try
             {
                 var spots = await _repo.GetSpotAsyncByUserRegistered(userId);
-                var results = _mapper.Map<IEnumerable<SpotDto>>(spots);
+                var results = _mapper.Map<IEnumerable<SpotDetailDto>>(spots);
 
                 return Ok(results);
 
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Internal error 500");
             }
@@ -108,7 +108,7 @@ namespace Snowman.Tourism.WebApi.Controllers
                     return Created("/api/spot/{model.Id}", _mapper.Map<SpotDto>(spot));
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Internal error 500");
             }

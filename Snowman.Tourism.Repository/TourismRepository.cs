@@ -62,7 +62,8 @@ namespace Snowman.Tourism.Repository
 
         public async Task<Spot> GetSpotAsyncById(int spotId, bool includeChildren = false)
         {
-            IQueryable<Spot> query = _context.Spots;
+            IQueryable<Spot> query = _context.Spots
+                                        .Include(s => s.Category);
 
             if (includeChildren)
             {
@@ -80,6 +81,7 @@ namespace Snowman.Tourism.Repository
         public async Task<Spot[]> GetSpotAsyncByUserRegistered(int userId)
         {
             return await _context.Spots
+                            .Include(s => s.Category)
                             .OrderBy(s => s.Id)
                             .Where(s => s.UserId == userId)
                             .ToArrayAsync();
@@ -87,7 +89,8 @@ namespace Snowman.Tourism.Repository
 
         public async Task<Spot[]> GetAllSpotsAsyncByName(string name, bool includeChildren = false)
         {
-            IQueryable<Spot> query = _context.Spots;
+            IQueryable<Spot> query = _context.Spots
+                                        .Include(s => s.Category);
 
             if (includeChildren)
             {
